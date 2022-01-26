@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>乐匠</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
+<!--评论-->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CLHTZRJ8BS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CLHTZRJ8BS');
+</script>
+</head>
+ <style type="text/css">
+  .app-nav li a {
+    color: white;
+    display: block;
+    line-height: 1;
+    transition: var(--navbar-root-transition);
+}
+</style>
+
+<body>
+  <div id="app">请等待...</div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  <script>
+(function($){
+    $.fn.snow = function(options){
+    var $flake = $('<div id="snowbox" />').css({'position': 'absolute','z-index':'9999', 'top': '-50px'}).html('&#10052;'),
+    documentHeight     = $(document).height(),
+    documentWidth    = $(document).width(),
+    defaults = {
+        minSize        : 5,
+        maxSize        : 10,
+        newOn        : 1000,
+        flakeColor    : "#FFFFFF" /* 此处可以定义雪花颜色，若要白色可以改为#FFFFFF */
+    },
+    options    = $.extend({}, defaults, options);
+    var interval= setInterval( function(){
+    var startPositionLeft = Math.random() * documentWidth - 100,
+    startOpacity = 0.5 + Math.random(),
+    sizeFlake = options.minSize + Math.random() * options.maxSize,
+    endPositionTop = documentHeight - 200,
+    endPositionLeft = startPositionLeft - 500 + Math.random() * 500,
+    durationFall = documentHeight * 10 + Math.random() * 5000;
+    $flake.clone().appendTo('body').css({
+        left: startPositionLeft,
+        opacity: startOpacity,
+        'font-size': sizeFlake,
+        color: options.flakeColor
+    }).animate({
+        top: endPositionTop,
+        left: endPositionLeft,
+        opacity: 0.2
+    },durationFall,'linear',function(){
+        $(this).remove()
+    });
+    }, options.newOn);
+    };
+})(jQuery);
+$(function(){
+    $.fn.snow({ 
+        minSize: 5, /* 定义雪花最小尺寸 */
+        maxSize: 10,/* 定义雪花最大尺寸 */
+        newOn: 300  /* 定义密集程度，数字越小越密集 */
+    });
+});
+    window.$docsify = {
+//设置文章尾部
+     plugins: [
+        function(hook) {
+            var footer = [
+              '<hr/>',
+              '<footer>',
+              '<span><a href="https://github.com/Coisrni">Coisrni 怦然心动</a> &copy;2021.</span>',
+              '<span>提供的内容仅供学习</span>',
+              '</footer>'
+            ].join('');
+
+            hook.afterEach(function(html) {
+              return html + footer;
+            });
+          }
+    ],
+    auto2top: true,
+    onlyCover: false,
+    coverpage:true, //添加封面
+       coverpage: {
+        '/': '_coverpage.md'
+      },
+      logo: '/_media/icon.svg',
+      name: '<span>yangmimi</span>',
+      repo: '',
+      loadSidebar: true,//添加侧边栏
+       alias: {
+      '/.*/_sidebar.md': '/_sidebar.md'
+         },
+      //表示只显示h1~h2的标题
+      subMaxLevel: 2,
+       loadNavbar: true,//添加头部导航
+      
+       //字数统计
+    count:{
+        countable:true,
+        fontsize:'0.9em',
+        color:'rgb(90,90,90)',
+        language:'chinese'
+      },
+       notFoundPage: 'my404.md'
+
+    }
+  </script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <!--1.出现403跨域问题  2.出现名称过长 导致出现Gitalk Error: Validation Failed.-->
+  <script>
+     const gitalk = new Gitalk({
+      id: 'Wiki Document Comment',
+      title: 'RulatedayDnd5eWiki',
+      clientID: '1034367562681b0c73f7',
+      clientSecret: 'ae00237d7b4c568de0cbd5838fae22a692e32eed',
+      repo: 'gitalk-doc',
+      owner: 'Coisrni',
+      admin: ['Coisrni'],
+      distractionFreeMode: false,
+      proxy: 'https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token'
+    })
+    // 监听URL中hash的变化，如果发现换了一个MD文件，那么刷新页面，解决整个网站使用一个gitalk评论issues的问题。
+  
+   </script>
+
+<!--谷歌统计-->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+<!--图片缩放 - Zoom image-->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <!--代码高亮 处理基础的剩下的自己要配置 例如java-->
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-php.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-sql.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-jsx.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-c.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-cpp.min.js"></script>
+<!--赋值到剪切板-->
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+<!--docsify的分页导航插件，由@imyelo提供。-->
+<script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+
+<!--字数统计-->
+<script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+  
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+</body>
+</html>
